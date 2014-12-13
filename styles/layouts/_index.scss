@@ -1,0 +1,74 @@
+.auth-form{
+    width: 460px;
+}
+
+/* auth page
+==========================*/
+.auth-page{
+    padding-top: 80px;
+    & > .actionbar{
+        @extend .transparent;
+    }
+}
+.btn-register-submit{
+    width: 460px;
+    @extend .absolute;
+    bottom: 60px;
+    left: calc(50% - 230px);
+}
+
+/* fragment container
+===================*/
+.fragment-container{
+    height: calc(100% - 42px);
+}
+
+/* dashboard
+=========================*/
+.nav-tabs a.active{
+    color: #555;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+.nav-tabs > li{
+    float: right;
+}
+
+/* departments
+=========================*/
+.categories-list{
+    padding-left: 0;
+    @extend .mt-lg;
+}
+.category-item{
+    list-style-position:inside;
+    @extend .pointer;
+    @extend .ptb;
+    @extend .pl;
+    &.active{
+        background-color: #f7f7f7;
+    }
+}
+.departments-list-container{
+    background-color: #f7f7f7;
+}
+.add-departments-panel{
+    background-color: #f7f7f7;
+}
+
+/* doctors
+===========================*/
+.add-doctors-panel{
+    background-color: #fff;
+}
+.source-input-field{
+    width: 130px !important;
+}
+.source-item{
+    background-color: $baby-blue;
+    border-radius: 20%;
+    padding-left: 8px;
+    @include size(80px);
+}

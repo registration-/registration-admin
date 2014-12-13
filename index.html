@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+        <title ng-bind="$state.current.data.pageTitle"></title>
+        <link rel="shortcut icon" href="assets/logo.ico">
+        <link rel="stylesheet" href="bower_components/normalize.css/normalize.css">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css">
+        <link rel="stylesheet" href="styles/index.css">
+    </head>
+    <body class="cover container-clip">
+
+
+
+    
+        <div class="cover container-clip slide" ui-view></div>
+
+
+        <!-- mask -->
+        <div id="gl-mask" class="fixed cover flex-row top mask">
+            <div class="alert-modal">
+                <span class="alert-msg"></span>
+                <i class="fa fa-close fa-lg alert-closer"></i>
+            </div>
+            <div class="confirm-modal">
+               <span class="confirm-msg"></span>
+               <footer class="footer flex-row end">
+                   <button class="btn btn-default cancel-btn">Cancel</button>
+                   <button class="btn btn-primary ml-lg confirm-btn">OK</button>
+               </footer>
+            </div>
+        </div>
+        <!-- end mask -->
+
+
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
+        <script src="bower_components/angular-ui-select/dist/select.js"></script>
+
+
+
+        <script src="scripts/index.js"></script>
+    
+        <script src="scripts/configs/AppConfig.js"></script>
+       
+       <script src="scripts/resources/ResourceModule.js"></script> 
+       <script src="scripts/resources/Location.js"></script> 
+       <script src="scripts/resources/Hospital.js"></script> 
+       <script src="scripts/resources/Department.js"></script> 
+       <script src="scripts/resources/Doctor.js"></script> 
+
+        <script src="scripts/auth/AuthModule.js"></script>
+        <script src="scripts/auth/AUTH_EVENTS.js"></script>
+        <script src="scripts/auth/AuthController.js"></script>
+        <script src="scripts/auth/AuthService.js"></script>
+
+
+        <script src="scripts/admin/AdminController.js"></script>
+        <script src="scripts/admin/DepartmentController.js"></script>
+        <script src="scripts/admin/DoctorController.js"></script>
+        <script src="scripts/admin/SourceController.js"></script>
+        <script src="scripts/admin/RegistrationController.js"></script>
+
+        <script src="scripts/utils/UtilsModule.js"></script>
+        <script src="scripts/utils/PostInterceptor.js"></script>
+        <script src="scripts/utils/InputHintDirective.js"></script>
+        <script src="scripts/utils/PaperInputDirective.js"></script>
+
+
+    </body>
+</html>

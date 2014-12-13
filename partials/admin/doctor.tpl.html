@@ -1,0 +1,137 @@
+<div class="cover center-block mt-lg container-clip relative">
+    <div class="cover absolute top left container-clip">
+        <a href="" class="btn btn-primary btn-block mb-lg" ng-click="doctorCtrl.status.addingDoctors = !doctorCtrl.status.addingDoctors">添加医生</a>
+        <table class="container-auto full-row table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th class="w-2"></th>
+                    <th class="w-1">专长</th>
+                    <th class="w-2">简介</th>
+                    <th class="w-5">号源</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="doctor in doctorCtrl.doctors">
+                    <td><input type="checkbox"></td>
+                    <td class="w-1">
+                        <div class="flex-row">
+                            <div class="flex-column">
+                                <img ng-src="{{doctor.avatar}}" class="avatar-m img-circle" alt="">
+                                <p class="mt text-primary pointer udl">{{doctor.name}}</p>
+                            </div>
+                            <div class="">
+                                <span class="text-muted">{{doctor.title}}</span>
+                                <h6 class="text-muted">{{doctor.department}}</h6>
+                                <p class="text-success"><i class="fa fa-thumbs-o-up mr-lg">:</i>{{doctor.grade || '89'}}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{doctor.good_at | limitTo: 20}}</td>
+                    <td>{{doctor.description | limitTo: 50}}</td>
+                    <td style="vertical-align: middle;">
+                        <div class="flex-row start">
+                            <div class="flex-column">
+                                <span class="fa fa-plus-circle fa-2x text-success pointer" ng-click="doctorCtrl.addMoreSource($index)"></span>
+                                <span class="fa fa-check-circle fa-2x mt-lg text-success pointer" ng-if="doctorCtrl.temps.sourceAddingIndex == $index" ng-click="doctorCtrl.submitSources($index)"></span>
+                            </div>
+                            <div class="add-source-widget flex-column" ng-if="doctorCtrl.temps.sourceAddingIndex == $index">
+                                <input type="date" class="source-input-field" ng-model="doctorCtrl.temps.sourceToAdd.date" tooltip="就诊日期">
+                                <input type="number" class="source-input-field" min="2" ng-model="doctorCtrl.temps.sourceToAdd.price" tooltip="挂号价格">
+                                <input type="number" class="source-input-field" min="1" ng-model="doctorCtrl.temps.sourceToAdd.amount" tooltip="号源数量">
+                            </div>
+                            <div class="source-item ml flex-column items-start center text-white" ng-repeat="source in doctor.sources">
+                                <span><i class="fa fa-calendar fa-fw mr"></i>{{source.date | date: 'M/d'}}</span>
+                                <span><i class="fa fa-rmb fa-fw mr"></i>{{source.price}}</span>
+                                <span><i class="fa fa-pie-chart fa-fw mr"></i>{{source.amount}}</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="cover flex-column absolute top add-doctors-panel left container-clip scale" ng-class="{active: doctorCtrl.status.addingDoctors}">
+        <div class="full-row flex-row mb-lg">
+            <i class="fa fa-2x fa-angle-double-left pointer text-muted" ng-click="doctorCtrl.status.addingDoctors = false;"></i>
+            <a href="" class="btn btn-primary flex-1 ml-extra" ng-click="doctorCtrl.addMoreDoctor()">继续添加</a>
+            <a href="" class="btn btn-default flex-1 ml-extra" ng-click="doctorCtrl.submitNewDoctors()">保存</a>
+        </div>
+        <form class="new-doctor-form full-row well" name="new-doctor-form">
+            <div class="full-row flex-row between items-start">
+                <div class="flex-1">
+                    <div class="full-row flex-row between mb">
+                        <div class="flex-row flex-1">
+                            <label for="" class="mr-lg">姓名</label>
+                            <input type="text" ng-model="doctorCtrl.temps.doctorToAdd.name" class="form-control flex-1" placeholder="医生姓名，必须">
+                        </div>
+                        <div class="flex-row flex-1 ml-lg">
+                            <label for="" class="mr-lg">职称</label>
+                            <input type="text" ng-model="doctorCtrl.temps.doctorToAdd.title" class="form-control flex-1" placeholder="医生职称">
+                        </div>
+                        
+                    </div>
+                    <div class="flex-row mb">
+                        <label for="" class="mr-lg">医生专长</label>
+                        <input type="text" ng-model="doctorCtrl.temps.doctorToAdd.good_at" class="form-control flex-1" placeholder="医生专长">
+                    </div>
+                    <div class="">
+                        <label for="">医生头像</label>
+                        <div class="flex-row">
+                            <input type="url" class="form-control flex-4" ng-model="doctorCtrl.temps.doctorToAdd.avatar" placeholder="头像链接">
+                            <a href="" class="btn btn-info flex-1 ml-extra">或上传</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 ml-extra">
+                    <div class="form-group flex-row">
+                        <div>
+                            <label for="">所属科室类别</label>
+                            <select ng-model="doctorCtrl.departmentsForDoctor" ng-options="category for (category,departments) in doctorCtrl.departments">
+                            </select>
+                        </div>
+                        <div>
+                            <label for="">所属子科室</label>
+                            <select ng-model="doctorCtrl.temps.doctorToAdd.department" ng-options="department.name for department in doctorCtrl.departmentsForDoctor">
+                            </select>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="">医生简介</label>
+                        <textarea rows="3" ng-model="doctorCtrl.temps.doctorToAdd.description" class="form-control" placeholder="简介"></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="full-row flex-1">
+            <table class="container-auto full-row table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th class="w-1"></th>
+                        <th>头衔</th>
+                        <th>所属科室</th>
+                        <th class="w-1">专长</th>
+                        <th class="w-5">简介</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="doctor in doctorCtrl.temps.doctors">
+                        <td><input type="checkbox"></td>
+                        <td class="w-1">
+                            <div class="flex-column">
+                                <img ng-src="{{doctor.avatar}}" class="avatar-sm img-circle" alt="">
+                                <p class="mt">{{doctor.name}}</p>
+                            </div>
+                        </td>
+                        <td>{{doctor.title}}</td>
+                        <td>{{doctor.department}}</td>
+                        <td>{{doctor.good_at | limitTo: 20}}</td>
+                        <td>{{doctor.description | limitTo: 50}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

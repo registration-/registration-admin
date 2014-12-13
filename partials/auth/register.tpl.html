@@ -1,0 +1,35 @@
+<div class="cover bg-primary start flex-column pt-extra">
+    <form name="registerForm" class="cover" ng-class="{wobble: authCtrl.errors.registerFeedback}" ng-submit="authCtrl.register(authCtrl.registration)" novalidate>
+        <div class="full-row flex-row items-start">
+            <div class="auth-form">
+                <paper-input class="form-group full-row" label="账号" hint="* 6位，登陆凭证" error="authCtrl.errors.admin_account">
+                <input type="text" class="flat-input full-row" ng-model="authCtrl.registration.admin_account" ng-change="authCtrl.dismissError('admin_account')" required>
+                </paper-input>
+                <paper-input class="form-group full-row" label="密码" hint="* 登陆密码" error="authCtrl.errors.admin_password">
+                <input type="password" ng-model="authCtrl.registration.admin_password" ng-change="authCtrl.dismissError('admin_password')" class="flat-input full-row" required>
+                </paper-input>
+                <paper-input class="form-group full-row" label="确认密码" hint="*" error="authCtrl.errors.admin_password">
+                <input type="password" ng-model="authCtrl.registration.confirmed_password" ng-change="authCtrl.dismissError('admin_password')" class="flat-input full-row" required>
+                </paper-input>
+            </div>
+            <div class="auth-form">
+                <paper-input class="form-group full-row" label="医院名称" hint="＊" error="authCtrl.errors.name">
+                <input type="text" ng-model="authCtrl.registration.name" ng-change="authCtrl.dismissError('name')" class="flat-input full-row" required>
+                </paper-input>
+                <ui-select ng-model="authCtrl.registration.province">
+                    <ui-select-match placeholder="所在省份">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="province in authCtrl.provinces | filter:$select.search">
+                        <span>{{province.name}}</span>
+                    </ui-select-choices>
+                </ui-select>
+                <ui-select ng-model="authCtrl.registration.city" ng-disabled="!authCtrl.registration.province" class="mt-lg">
+                    <ui-select-match placeholder="所在城市">{{$select.selected.city}}</ui-select-match>
+                    <ui-select-choices repeat="city in authCtrl.cities | filter: {pid: authCtrl.registration.province.id}">
+                        <span>{{city.city}}</span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <button class="center-block btn-register-submit btn-lg btn btn-flat btn-raised btn-primary"  ng-disabled="registerForm.$invalid || authCtrl.status.processing || authCtrl.error">提交<span class="fa fa-spin fa-spinner ml-lg" ng-if="authCtrl.status.processing"></span></button>
+    </form>
+</div>

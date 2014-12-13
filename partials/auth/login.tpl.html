@@ -1,0 +1,13 @@
+<div class="cover bg-primary start flex-column pt-extra">
+    <form name="loginForm" class="auth-form flex-column center stretch" ng-class="{wobble: authCtrl.errors.loginFeedback}" ng-submit="authCtrl.login(authCtrl.account)" novalidate>
+        <paper-input class="form-group full-row" label="账号" hint="* 管理所用账号">
+        <input type="text" class="flat-input full-row" ng-model="authCtrl.account.admin_account" ng-change="authCtrl.dismissError('loginFeedback')">
+        </paper-input>
+        <paper-input class="form-group full-row" label="密码" hint="">
+        <input type="password" ng-model="authCtrl.account.admin_password" ng-change="authCtrl.dismissError('loginFeedback')" class="flat-input full-row">
+        </paper-input>
+        <div class="alert alert-danger" ng-show="authCtrl.errors.loginFeedback">{{authCtrl.errors.loginFeedback}}</div>
+        <button class="btn btn-flat btn-lg btn-raised btn-primary"  ng-disabled="loginForm.$invalid || authCtrl.status.processing || authCtrl.errors.loginFeedback">登陆<span class="fa fa-spin fa-spinner ml-lg" ng-if="authCtrl.status.processing"></span></button>
+        <a href="" class="udl flat text-white mt-lg">忘记密码?</a>
+    </form>
+</div>

@@ -1,0 +1,16 @@
+<div class="cover container-clip">
+    <header class="actionbar flex-row fixed top full">
+        <h1 class="brand action ptb">{{adminCtrl.hospital.name}}</h1>
+        <a ui-sref="admin.settings" class="avatar-sm"><img ng-src="{{adminCtrl.hospital.picture}}" alt=""></a>
+    </header>
+    <div class="body container-clip">
+        <div class="full-column w-9 center-block pt-extra">
+            <ul class="nav nav-tabs">
+                <li role="presentation"><a ui-sref="admin.registrations" ui-sref-active="active">核查预约</a></li>
+                <li role="presentation"><a ui-sref="admin.doctors" ui-sref-active="active">医生与号源管理</a></li>
+                <li role="presentation"><a ui-sref="admin.departments" ui-sref-active="active">科室管理</a></li>
+            </ul>
+            <main class="fragment-container full-row slide" ui-view></main>
+        </div>
+    </div>
+</div>

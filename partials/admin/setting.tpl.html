@@ -1,0 +1,47 @@
+<div class="cover pt-lg container-auto">
+    <form name="settingForm" class="w-9 center-block">
+        <div class="full-row mb-extra bb ptb-lg container-clip" style="border-color: #ccc;"><a href="" ng-click="adminCtrl.updateHospitalProfile()" class="btn pull-right btn-primary">保存</a></div>
+        <div class="cover flex-row items-start">
+            <div class="flex-1 flex-column stretch">
+                <div class="form-group">
+                    <label for="">医院名称</label>
+                    <input type="text" class="form-control" ng-model="adminCtrl.hospital.name">
+                </div>
+                <div class="form-group">
+                    <label for="">医院类型(如：综合医院)</label>
+                    <input type="text" class="form-control" ng-model="adminCtrl.hospital.type">
+                </div>
+                <div class="form-group">
+                    <label for="">医院级别(如：三甲医院)</label>
+                    <input type="text" class="form-control" ng-model="adminCtrl.hospital.level">
+                </div>
+                <div class="form-group">
+                    <label for="">医院联系电话</label>
+                    <input type="text" class="form-control" ng-model="adminCtrl.hospital.phone">
+                </div>
+                <div class="form-group">
+                    <label for="">医院官方网站</label>
+                    <input type="text" class="form-control" ng-model="adminCtrl.hospital.website">
+                </div>
+                <div class="form-group">
+                    <label for="">医院地址</label>
+                    <input type="text" class="form-control" ng-model="adminCtrl.hospital.location">
+                </div>
+            </div>
+            <div class="flex-1 flex-column stretch ml-extra">
+                <div class="form-group">
+                    <label for="">医院图片链接</label>
+                    <input type="text" class="form-control" ng-model="adminCtrl.hospital.picture">
+                </div>
+                <div class="form-group">
+                    <label for="">医院就诊规则</label>
+                    <textarea class="form-control" rows="4" ng-model="adminCtrl.hospital.rule"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="">医院简介</label>
+                    <textarea class="form-control" rows="4" ng-model="adminCtrl.hospital.description"></textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
