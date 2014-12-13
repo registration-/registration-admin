@@ -1,7 +1,14 @@
-git clone https://github.com/registration-/registration-admin.git
-cd registration-admin
-npm install
-grunt app
+```
+- git clone https://github.com/registration-/registration-admin.git
+
+- cd registration-admin
+
+- npm install
+
+- grunt app
+```
+
+[入口](https://hospital-jlxy.rhcloud.com)
 
 
 #### 功能
