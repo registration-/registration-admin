@@ -1,5 +1,5 @@
 <div class="cover center-block mt-lg container-clip relative">
-    <div class="cover absolute top left container-clip">
+    <div class="cover absolute top left container-auto-y">
         <a href="" class="btn btn-primary btn-block mb-lg" ng-click="doctorCtrl.status.addingDoctors = !doctorCtrl.status.addingDoctors">添加医生</a>
         <table class="container-auto full-row table table-bordered">
             <thead>
@@ -51,7 +51,7 @@
             </tbody>
         </table>
     </div>
-    <div class="cover flex-column absolute top add-doctors-panel left container-clip scale" ng-class="{active: doctorCtrl.status.addingDoctors}">
+    <div class="cover flex-column absolute top add-doctors-panel left container-auto-y scale" ng-class="{active: doctorCtrl.status.addingDoctors}">
         <div class="full-row flex-row mb-lg">
             <i class="fa fa-2x fa-angle-double-left pointer text-muted" ng-click="doctorCtrl.status.addingDoctors = false;"></i>
             <a href="" class="btn btn-primary flex-1 ml-extra" ng-click="doctorCtrl.addMoreDoctor()">继续添加</a>
