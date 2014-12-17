@@ -108,6 +108,7 @@ angular.module('app')
 
             // submit
             index = index || scope.temps.sourceAddingIndex;
+            console.log(index);
             var did = scope.doctors[index].id;
             sources.forEach(function(source) {
                 delete source['$$hashKey'];
