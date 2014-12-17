@@ -15,7 +15,7 @@ angular.module('app')
         scope.doctors.$promise.then(function(){
             scope.doctors.forEach(function(d){
                 d.sources.forEach(function(s){
-                    s.date = new Date(s.date);
+                    //s.date = new Date(s.date);
 
                 });
             });
@@ -115,6 +115,7 @@ angular.module('app')
             sources.forEach(function(source) {
                 delete source['$$hashKey'];
                 source.doctor_id = did;
+                source.date = source.date.getFullYear() + '-' + (source.date.getMonth() + 1) + '-' + source.date.getDate();
             });
 
             var postData = {
