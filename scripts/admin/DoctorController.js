@@ -107,7 +107,9 @@ angular.module('app')
             }
 
             // submit
-            index = index || scope.temps.sourceAddingIndex;
+            if(index === undefined){
+                index = scope.temps.sourceAddingIndex;
+            }
             console.log(index);
             var did = scope.doctors[index].id;
             sources.forEach(function(source) {
