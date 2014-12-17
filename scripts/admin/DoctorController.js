@@ -16,6 +16,7 @@ angular.module('app')
             scope.doctors.forEach(function(d){
                 d.sources.forEach(function(s){
                     s.date = new Date(s.date);
+
                 });
             });
             console.log(scope);
@@ -76,7 +77,7 @@ angular.module('app')
             var toAdd = scope.temps.sourceToAdd || {};
             if (index !== scope.temps.sourceAddingIndex) {
                 if (scope.temps.sourceAddingIndex === undefined) {
-
+                    scope.temps.sourceAddingIndex = index;
                 }
                 if (toAdd.date && toAdd.amount && toAdd.price) {
                     scope.temps.sources.unshift(toAdd);
