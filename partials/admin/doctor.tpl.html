@@ -41,7 +41,7 @@
                                 <input type="number" class="source-input-field" min="1" ng-model="doctorCtrl.temps.sourceToAdd.amount" tooltip="号源数量">
                             </div>
                             <div class="source-item ml flex-column items-start center text-white" ng-repeat="source in doctor.sources">
-                                <span><i class="fa fa-calendar fa-fw mr"></i>{{source.date | date: 'M/d'}}</span>
+                                <span><i class="fa fa-calendar fa-fw mr"></i>{{source.date}}</span>
                                 <span><i class="fa fa-rmb fa-fw mr"></i>{{source.price}}</span>
                                 <span><i class="fa fa-pie-chart fa-fw mr"></i>{{source.amount}}</span>
                             </div>
