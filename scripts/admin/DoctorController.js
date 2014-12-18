@@ -66,6 +66,7 @@ angular.module('app')
                         if (d && d.length > 0)
                             scope.doctors = d;
                     });
+                    scope.temps.doctors = [];
                 }
             }, function(data) {
                 console.log(data);
