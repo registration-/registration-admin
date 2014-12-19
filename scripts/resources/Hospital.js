@@ -14,6 +14,14 @@ angular.module('app.resource')
         get: {
             method: 'GET',
             url: APP_CONFIG.api.hospital.get
+        },
+        getRegistration: {
+            method: 'GET',
+            url: APP_CONFIG.api.hospital.base + '/:hid/registrations/:code'
+        },
+        checkRegistration: {
+            method: 'PUT',
+            url: APP_CONFIG.api.hospital.base + '/:hid/registrations/:rid'
         }
     });
 }]);

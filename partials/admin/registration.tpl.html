@@ -1,8 +1,24 @@
 <div class="full-column center-block w-8 container-clip pt-extra">
-    <form name="registrationProcessForm" novalidate ng-submit="registrationCtrl.checkCode()">
+    <form name="registrationProcessForm" novalidate ng-submit="registrationCtrl.getRegistration()">
         <div class="input-group">
             <input type="text" ng-model="registrationCtrl.code" class="form-control" placeholder="输入预约号，以确认就诊" required>
             <span class="input-group-btn"><button class="btn btn-primary"><i class="fa fa-search"></i></button></span>
         </div>
     </form>
+    <div ng-if="registrationCtrl.registration" class="flex-row start">
+        <div class="flex-column center">
+           <img ng-src="{{registrationCtrl.registration.user_avatar}}" alt="" class="avatar-m"> 
+           <span>{{registrationCtrl.registration.user_name}}</span>
+        </div>
+        <div class="flex-column center">
+            <span>预约号:{{registrationCtrl.registration.code}}</span>
+            <span>下单时间:{{registrationCtrl.registration.order_at | date: 'shortDate'}}</span>
+            <span>就诊日期:{{registrationCtrl.registration.date | date: 'shortDate'}}</span>
+        </div>
+        <div class="flex-column center">
+            <img ng-src="{{registrationCtrl.registration.doctor_avatar}}" alt="" class="avatar-m">
+            <span>医生名字:{{registrationCtrl.registration.doctor_name}}</span>
+        </div>
+        <button class="btn btn-primary" ng-click="registrationCtrl.checkRegistration()">确认就诊</button>
+    </div>
 </div>
