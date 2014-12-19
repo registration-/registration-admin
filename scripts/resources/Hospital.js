@@ -22,6 +22,10 @@ angular.module('app.resource')
         checkRegistration: {
             method: 'PUT',
             url: APP_CONFIG.api.hospital.base + '/:hid/registrations/:rid'
+        },
+        update: {
+            method: 'PUT',
+            url: APP_CONFIG.api.hospital.base + '/:hid'
         }
     });
 }]);

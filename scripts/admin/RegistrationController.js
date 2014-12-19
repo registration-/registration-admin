@@ -33,7 +33,7 @@ angular.module('app')
             },{
                 status: 'F'
             },function(){
-                $window.alert('确认就诊成功！')；
+                $window.alert('确认就诊成功！');
                 scope.registration = null;
             },function(){
 
